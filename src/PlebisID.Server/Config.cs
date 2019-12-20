@@ -33,7 +33,6 @@ namespace PlebisID.Server
                         new Secret("secret".Sha256())
                     },
                     AllowedScopes = { "membership.read" }
-
                 }
             };
         
