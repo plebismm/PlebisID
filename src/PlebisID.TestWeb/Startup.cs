@@ -40,6 +40,9 @@ namespace PlebisID.TestWeb
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
 
+                    options.Scope.Add("profile");
+                    options.Scope.Add("address");
+
                     options.SaveTokens = true;
                 });
 
