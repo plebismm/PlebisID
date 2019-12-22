@@ -48,6 +48,8 @@ namespace PlebisID.Server
                     RequireConsent = false,
                     RequirePkce = true,
 
+                    //AllowedCorsOrigins = { "https://dev-9nlk4lao.eu.auth0.com" },
+
                     RedirectUris = { "http://localhost:5002/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
 
