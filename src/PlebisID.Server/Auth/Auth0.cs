@@ -23,26 +23,26 @@ namespace Microsoft.Extensions.DependencyInjection
 
             options(auth0Options);
 
-            return builder.AddOpenIdConnect(authenticationScheme, displayName, options =>
+            return builder.AddOpenIdConnect(authenticationScheme, displayName, oidc =>
             {
-                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                options.SignOutScheme = IdentityServerConstants.SignoutScheme;
+                oidc.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                oidc.SignOutScheme = IdentityServerConstants.SignoutScheme;
 
-                options.Authority = $"https://{auth0Options.Domain}";
-                options.RequireHttpsMetadata = false;
+                oidc.Authority = $"https://{auth0Options.Domain}";
+                oidc.RequireHttpsMetadata = false;
 
-                options.ClientId = auth0Options.ClientId;
-                options.ClientSecret = auth0Options.ClientSecret;
-                options.ResponseType = "code";
+                oidc.ClientId = auth0Options.ClientId;
+                oidc.ClientSecret = auth0Options.ClientSecret;
+                oidc.ResponseType = "code";
 
-                options.Scope.Add("openid");
-                options.Scope.Add("profile");
+                oidc.Scope.Add("openid");
+                oidc.Scope.Add("profile");
 
-                options.CallbackPath = new PathString($"/signin-{authenticationScheme}");
+                oidc.CallbackPath = new PathString($"/signin-{authenticationScheme}");
 
-                options.ClaimsIssuer = "Auth0";
+                oidc.ClaimsIssuer = "Auth0";
 
-                options.Events = new OpenIdConnectEvents
+                oidc.Events = new OpenIdConnectEvents
                 {
                     OnTokenResponseReceived = (context) =>
                     {
