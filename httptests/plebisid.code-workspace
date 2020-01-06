@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\henri\\source\\repos\\PlebisID"
+		}
+	],
+	"settings": {
+		"rest-client.environmentVariables": {
+			"$shared": {},
+			"local": {
+				"host": "http://localhost:5000/",
+				"identity": "http://localhost:5000/",
+				"client_id": "BankServiceClient",
+				"secret" : "secret"
+			}
+		}
+	}
+}

@@ -59,6 +59,43 @@ namespace PlebisID.Server
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Address
                     }
+                },
+                new Client
+                {
+                    ClientName = "VueJS Sample Client",
+                    ClientId = "vuejs_code_client",
+                    AccessTokenType = AccessTokenType.Reference,
+                    // RequireConsent = false,
+                    AccessTokenLifetime = 330,// 330 seconds, default 60 minutes
+                    IdentityTokenLifetime = 300,
+
+                    RequireClientSecret = false,
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+
+                    AllowAccessTokensViaBrowser = true,
+                    RedirectUris = new List<string>
+                    {
+                        "https://localhost:5005",
+                        "https://localhost:5005/callback.html",
+                        "https://localhost:5005/silent-renew.html"
+                    },
+                    PostLogoutRedirectUris = new List<string>
+                    {
+                        "https://localhost:5005/",
+                        "https://localhost:5005"
+                    },
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        "https://localhost:5005"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        "openid",
+                        "role",
+                        "profile",
+                        "email"
+                    }
                 }
             };
         
