@@ -41,7 +41,6 @@ namespace PlebisID.Server
             const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServerQuickstart;trusted_connection=yes;";
 
             var builder = services.AddIdentityServer()
-                .AddTestUsers(TestUsers.Users)
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
