@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.TestApi", "PlebisI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.TestClient", "PlebisID.TestClient\PlebisID.TestClient.csproj", "{C137A455-6F9D-41D6-90E6-C93CABFBF983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlebisID.TestWeb", "PlebisID.TestWeb\PlebisID.TestWeb.csproj", "{3610704C-6A96-416A-8827-D0D29ED7ACC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.TestWeb", "PlebisID.TestWeb\PlebisID.TestWeb.csproj", "{3610704C-6A96-416A-8827-D0D29ED7ACC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
