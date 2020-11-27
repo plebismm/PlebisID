@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PlebisID.Server.Areas.Identity.Data;
 
-namespace PlebisID.Server.Data
+namespace PlebisID.Data
 {
     public class PlebisIDContext : IdentityDbContext<PlebisUser>
     {

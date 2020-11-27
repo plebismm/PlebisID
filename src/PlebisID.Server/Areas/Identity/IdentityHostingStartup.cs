@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PlebisID.Server.Areas.Identity.Data;
-using PlebisID.Server.Data;
+using PlebisID.Data;
 
 [assembly: HostingStartup(typeof(PlebisID.Server.Areas.Identity.IdentityHostingStartup))]
 namespace PlebisID.Server.Areas.Identity
@@ -18,7 +18,7 @@ namespace PlebisID.Server.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<PlebisIDContext>(options =>
                     options.UseSqlite(
-                        context.Configuration.GetConnectionString("PlebisIDContextConnection")));
+                        context.Configuration.GetConnectionString("PlebisIDContextConnection"), sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite")));
 
                 services.AddDefaultIdentity<PlebisUser>(options => 
                     {

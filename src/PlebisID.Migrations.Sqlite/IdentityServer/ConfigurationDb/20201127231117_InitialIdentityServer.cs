@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Data.Migrations.IdentityServer.ConfigurationDb
+namespace IdentityServer.ConfigurationDb
 {
     public partial class InitialIdentityServer : Migration
     {

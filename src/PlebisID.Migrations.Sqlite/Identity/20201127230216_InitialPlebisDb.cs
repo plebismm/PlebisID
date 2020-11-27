@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Data.Migrations.Identity.PlebisID
+namespace Identity
 {
-    public partial class InitialPlebisID : Migration
+    public partial class InitialPlebisDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PlebisID.Server.Data;
+using PlebisID.Data;
 
-namespace Data.Migrations.Identity.PlebisID
+namespace Identity
 {
     [DbContext(typeof(PlebisIDContext))]
     partial class PlebisIDContextModelSnapshot : ModelSnapshot

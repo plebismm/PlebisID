@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
     <Compile Remove="Quickstart\**" />
     <Compile Remove="Views\**" />
+    <Content Remove="Data\**" />
     <Content Remove="Quickstart\**" />
     <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Data\**" />
     <EmbeddedResource Remove="Quickstart\**" />
     <EmbeddedResource Remove="Views\**" />
+    <None Remove="Data\**" />
     <None Remove="Quickstart\**" />
     <None Remove="Views\**" />
   </ItemGroup>
@@ -42,6 +46,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Data\Migrations\Identity\" />
+    <ProjectReference Include="..\PlebisID.Data\PlebisID.Data.csproj" />
+    <ProjectReference Include="..\PlebisID.Migrations.Sqlite\PlebisID.Migrations.Sqlite.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
 </Project>

@@ -24,12 +24,12 @@ namespace PlebisID.Server.Areas.IdentityServer
                     .AddConfigurationStore(options =>
                     {
                         options.ConfigureDbContext = b => b.UseSqlite(context.Configuration.GetConnectionString("ConfigurationDbConnection"),
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                            sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite"));
                     })
                     .AddOperationalStore(options =>
                     {
                         options.ConfigureDbContext = b => b.UseSqlite(context.Configuration.GetConnectionString("PersistedGrantDbConnection"),
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                            sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite"));
                     });
 
                 // not recommended for production - you need to store your key material somewhere secure

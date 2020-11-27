@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Data.Migrations.IdentityServer.PersistedGrantDb
+namespace IdentityServer.PersistedGrantDb
 {
     [DbContext(typeof(PersistedGrantDbContext))]
-    [Migration("20201127222229_InitialIdentityServer")]
+    [Migration("20201127231108_InitialIdentityServer")]
     partial class InitialIdentityServer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

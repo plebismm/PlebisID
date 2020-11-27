@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PlebisID.Server.Data;
+using PlebisID.Data;
 
-namespace Data.Migrations.Identity.PlebisID
+namespace Identity
 {
     [DbContext(typeof(PlebisIDContext))]
-    [Migration("20201127203500_InitialPlebisID")]
-    partial class InitialPlebisID
+    [Migration("20201127230216_InitialPlebisDb")]
+    partial class InitialPlebisDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
