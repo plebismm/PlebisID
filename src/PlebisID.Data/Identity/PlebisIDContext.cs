@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PlebisID.Server.Areas.Identity.Data;
 
-namespace PlebisID.Data
+namespace PlebisID.Server.Areas.Identity.Data
 {
-    public class PlebisIDContext : IdentityDbContext<PlebisUser>
+    public class PlebisIDContext : IdentityDbContext<PlebisUser, PlebisRole, string>
     {
         public PlebisIDContext(DbContextOptions<PlebisIDContext> options)
             : base(options)

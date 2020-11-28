@@ -9,11 +9,14 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using PlebisID.Server.Areas.Identity;
+using PlebisID.Server.Areas.Identity.Data;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -34,6 +37,23 @@ namespace PlebisID.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var identityServerBuilder = services
+                .AddIdentityServer()
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = b => b.UseSqlite(Configuration.GetConnectionString("ConfigurationDbConnection"),
+                        sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite"));
+                })
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = b => b.UseSqlite(Configuration.GetConnectionString("PersistedGrantDbConnection"),
+                        sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite"));
+                })
+                .AddAspNetIdentity<PlebisUser>();
+
+            // not recommended for production - you need to store your key material somewhere secure
+            identityServerBuilder.AddDeveloperSigningCredential();
 
             services.AddAuthentication()
                 .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
@@ -62,7 +82,8 @@ namespace PlebisID.Server
                 });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
-
+            services.AddAuthorization();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -73,13 +94,11 @@ namespace PlebisID.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            // uncomment if you want to add MVC
             app.UseStaticFiles();
             app.UseRouting();
 
             app.UseIdentityServer();
 
-            // uncomment, if you want to add MVC
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

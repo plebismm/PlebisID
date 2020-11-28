@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PlebisID.Server.Areas.Identity.Data;
-using PlebisID.Data;
 
 [assembly: HostingStartup(typeof(PlebisID.Server.Areas.Identity.IdentityHostingStartup))]
 namespace PlebisID.Server.Areas.Identity
@@ -20,7 +19,8 @@ namespace PlebisID.Server.Areas.Identity
                     options.UseSqlite(
                         context.Configuration.GetConnectionString("PlebisIDContextConnection"), sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite")));
 
-                services.AddDefaultIdentity<PlebisUser>(options => 
+                services
+                    .AddIdentity<PlebisUser, PlebisRole>(options =>
                     {
                         options.SignIn.RequireConfirmedAccount = true;
                         options.Password.RequireDigit = false;
@@ -30,7 +30,9 @@ namespace PlebisID.Server.Areas.Identity
                         options.Password.RequireUppercase = false;
                         options.Password.RequireNonAlphanumeric = false;
                     })
-                    .AddEntityFrameworkStores<PlebisIDContext>();
+                    .AddEntityFrameworkStores<PlebisIDContext>()
+                    .AddClaimsPrincipalFactory<ClaimsPrincipalFactory>()
+                    .AddDefaultTokenProviders();
             });
         }
     }
