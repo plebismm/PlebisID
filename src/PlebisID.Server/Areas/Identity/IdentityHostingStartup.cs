@@ -20,7 +20,7 @@ namespace PlebisID.Server.Areas.Identity
                         context.Configuration.GetConnectionString("PlebisIDContextConnection"), sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite")));
 
                 services
-                    .AddIdentity<PlebisUser, PlebisRole>(options =>
+                    .AddIdentity<PlebisUser, IdentityRole>(options =>
                     {
                         options.SignIn.RequireConfirmedAccount = true;
                         options.Password.RequireDigit = false;
@@ -31,7 +31,6 @@ namespace PlebisID.Server.Areas.Identity
                         options.Password.RequireNonAlphanumeric = false;
                     })
                     .AddEntityFrameworkStores<PlebisIDContext>()
-                    .AddClaimsPrincipalFactory<ClaimsPrincipalFactory>()
                     .AddDefaultTokenProviders();
             });
         }

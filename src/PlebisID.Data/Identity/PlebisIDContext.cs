@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PlebisID.Server.Areas.Identity.Data
 {
-    public class PlebisIDContext : IdentityDbContext<PlebisUser, PlebisRole, string>
+    public class PlebisIDContext : IdentityDbContext<PlebisUser>
     {
         public PlebisIDContext(DbContextOptions<PlebisIDContext> options)
             : base(options)

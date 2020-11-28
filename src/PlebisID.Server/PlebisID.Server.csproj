@@ -50,8 +50,4 @@
     <ProjectReference Include="..\PlebisID.Data\PlebisID.Data.csproj" />
     <ProjectReference Include="..\PlebisID.Migrations.Sqlite\PlebisID.Migrations.Sqlite.csproj" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-  </ItemGroup>
 </Project>

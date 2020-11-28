@@ -82,7 +82,7 @@ namespace PlebisID.Server
                 });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddAuthorization();
+
             services.AddRazorPages();
         }
 
