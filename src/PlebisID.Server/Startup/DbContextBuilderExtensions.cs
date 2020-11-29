@@ -18,7 +18,7 @@ namespace PlebisID.Server
 
         public static DbContextOptionsBuilder UseConfiguredEngine(this DbContextOptionsBuilder builder, string storageEngine, string connectionString)
         {
-            if (storageEngine == "sqlserver")
+            if (storageEngine.ToLower() == "sqlserver")
             {
                 builder.UseSqlServer(connectionString,
                     sql => sql.MigrationsAssembly("PlebisID.Migrations.SqlServer"));

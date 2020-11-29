@@ -19,7 +19,7 @@ namespace PlebisID.TestApi
             services.AddControllers();
             services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
             {
-                options.Authority = "http://localhost:5000";
+                options.Authority = "https://localhost:5000";
                 options.RequireHttpsMetadata = false;
                 options.Audience = "membership.read";
             });

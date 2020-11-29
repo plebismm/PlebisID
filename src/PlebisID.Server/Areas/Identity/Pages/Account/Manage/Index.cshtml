@@ -20,6 +20,17 @@
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Input.GivenName"></label>
+                <input asp-for="Input.GivenName" class="form-control" />
+                <span asp-validation-for="Input.GivenName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.FamilyName"></label>
+                <input asp-for="Input.FamilyName" class="form-control" />
+                <span asp-validation-for="Input.FamilyName" class="text-danger"></span>
+            </div>
+
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>

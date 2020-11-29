@@ -38,6 +38,12 @@ namespace PlebisID.Server.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Given name")]
+            public string GivenName { get; set; }
+            
+            [Display(Name = "Family name")]
+            public string FamilyName { get; set; }
         }
 
         private async Task LoadAsync(PlebisUser user)
@@ -49,7 +55,9 @@ namespace PlebisID.Server.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FamilyName = user.FamilyName,
+                GivenName = user.GivenName
             };
         }
 
@@ -76,6 +84,16 @@ namespace PlebisID.Server.Areas.Identity.Pages.Account.Manage
             if (!ModelState.IsValid)
             {
                 await LoadAsync(user);
+                return Page();
+            }
+
+            user.GivenName = Input.GivenName;
+            user.FamilyName = Input.FamilyName;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                StatusMessage = "An error occurred when storing your information";
                 return Page();
             }
 
