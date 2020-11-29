@@ -1,5 +1,7 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +17,8 @@ namespace PlebisID.Server.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<PlebisIDContext>(options =>
-                    options.UseSqlite(
-                        context.Configuration.GetConnectionString("PlebisIDContextConnection"), sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite")));
+                services.AddDbContext<PlebisDbContext>(options =>
+                    options.UseConfiguredEngine(context.Configuration, "PlebisIDContextConnection"));
 
                 services
                     .AddIdentity<PlebisUser, IdentityRole>(options =>
@@ -30,8 +31,19 @@ namespace PlebisID.Server.Areas.Identity
                         options.Password.RequireUppercase = false;
                         options.Password.RequireNonAlphanumeric = false;
                     })
-                    .AddEntityFrameworkStores<PlebisIDContext>()
+                    .AddEntityFrameworkStores<PlebisDbContext>()
                     .AddDefaultTokenProviders();
+
+                services.ConfigureApplicationCookie(options =>
+                {
+                    options.AccessDeniedPath = new PathString("/Identity/Account/AccessDenied");
+                    options.Cookie.Name = "Cookie";
+                    options.Cookie.HttpOnly = true;
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(720);
+                    options.LoginPath = new PathString("/Identity/Account/Login");
+                    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+                    options.SlidingExpiration = true;
+                });
             });
         }
     }

@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.TestClient", "Pleb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.TestWeb", "PlebisID.TestWeb\PlebisID.TestWeb.csproj", "{3610704C-6A96-416A-8827-D0D29ED7ACC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlebisID.Migrations.Sqlite", "PlebisID.Migrations.Sqlite\PlebisID.Migrations.Sqlite.csproj", "{93800EA4-E346-4D90-A7E7-231B633F1AE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.Migrations.Sqlite", "PlebisID.Migrations.Sqlite\PlebisID.Migrations.Sqlite.csproj", "{93800EA4-E346-4D90-A7E7-231B633F1AE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlebisID.Data", "PlebisID.Data\PlebisID.Data.csproj", "{C32522D7-86C0-4743-9B66-06B2E1903EFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlebisID.Data", "PlebisID.Data\PlebisID.Data.csproj", "{C32522D7-86C0-4743-9B66-06B2E1903EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlebisID.Migrations.SqlServer", "PlebisID.Migrations.SqlServer\PlebisID.Migrations.SqlServer.csproj", "{465DD27A-2119-47BC-9397-2A2C564C2D22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C32522D7-86C0-4743-9B66-06B2E1903EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C32522D7-86C0-4743-9B66-06B2E1903EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C32522D7-86C0-4743-9B66-06B2E1903EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465DD27A-2119-47BC-9397-2A2C564C2D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465DD27A-2119-47BC-9397-2A2C564C2D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465DD27A-2119-47BC-9397-2A2C564C2D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465DD27A-2119-47BC-9397-2A2C564C2D22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,11 +5,13 @@
 using IdentityServer4;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using PlebisID.Server.Areas.Identity;
 using PlebisID.Server.Areas.Identity.Data;
+using PlebisID.Server.Services;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -37,25 +40,27 @@ namespace PlebisID.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddScoped<IEmailSender, FakeEmailSender>();
 
             var identityServerBuilder = services
                 .AddIdentityServer()
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlite(Configuration.GetConnectionString("ConfigurationDbConnection"),
-                        sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite"));
+                    options.ConfigureDbContext = b => b.UseConfiguredEngine(Configuration, "ConfigurationDbConnection");
                 })
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlite(Configuration.GetConnectionString("PersistedGrantDbConnection"),
-                        sql => sql.MigrationsAssembly("PlebisID.Migrations.Sqlite"));
+                    options.ConfigureDbContext = b => b.UseConfiguredEngine(Configuration, "PersistedGrantDbConnection");
                 })
                 .AddAspNetIdentity<PlebisUser>();
 
             // not recommended for production - you need to store your key material somewhere secure
             identityServerBuilder.AddDeveloperSigningCredential();
 
-            services.AddAuthentication()
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie()
                 .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
                 {
                     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
@@ -81,9 +86,9 @@ namespace PlebisID.Server
                     options.ClientSecret = Configuration["Auth0:ClientSecret"];
                 });
 
-            services.AddDatabaseDeveloperPageExceptionFilter();
-
             services.AddRazorPages();
+
+            services.AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -96,13 +101,14 @@ namespace PlebisID.Server
 
             app.UseStaticFiles();
             app.UseRouting();
-
             app.UseIdentityServer();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHealthChecks("/healthz");
             });
         }
 

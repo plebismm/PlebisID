@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PlebisID.Server.Areas.Identity.Data
 {
-    public class PlebisIDContext : IdentityDbContext<PlebisUser>
+    public class PlebisDbContext : IdentityDbContext<PlebisUser>
     {
-        public PlebisIDContext(DbContextOptions<PlebisIDContext> options)
+        public PlebisDbContext(DbContextOptions<PlebisDbContext> options)
             : base(options)
         {
         }
@@ -22,5 +22,7 @@ namespace PlebisID.Server.Areas.Identity.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<PlebisOrganization> Organizations { get; set; }
     }
 }

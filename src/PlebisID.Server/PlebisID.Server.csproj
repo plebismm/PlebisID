@@ -49,5 +49,10 @@
   <ItemGroup>
     <ProjectReference Include="..\PlebisID.Data\PlebisID.Data.csproj" />
     <ProjectReference Include="..\PlebisID.Migrations.Sqlite\PlebisID.Migrations.Sqlite.csproj" />
+    <ProjectReference Include="..\PlebisID.Migrations.SqlServer\PlebisID.Migrations.SqlServer.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Areas\Organization\Pages\" />
   </ItemGroup>
 </Project>
