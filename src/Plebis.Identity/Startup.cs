@@ -17,8 +17,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Plebis.Identity.Areas.Identity;
-using Plebis.Identity.Areas.Identity.Data;
+using Plebis.Identity;
+using Plebis.Identity.Data;
 using Plebis.Identity.Services;
 using System;
 using System.Linq;
@@ -63,11 +63,11 @@ namespace Plebis.Identity
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = new PathString("/Identity/Account/AccessDenied");
+                options.AccessDeniedPath = new PathString("/Account/AccessDenied");
                 options.Cookie.Name = "Cookie";
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(720);
-                options.LoginPath = new PathString("/Identity/Account/Login");
+                options.LoginPath = new PathString("/Account/Login");
                 options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
                 options.SlidingExpiration = true;
             });

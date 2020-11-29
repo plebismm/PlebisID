@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plebis.Identity.Areas.Identity
+namespace Plebis.Identity
 {
     public class PlebisOrganization
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plebis.Identity.Areas.Identity.Data
+namespace Plebis.Identity.Data
 {
     public class PlebisRole : IdentityRole
     {

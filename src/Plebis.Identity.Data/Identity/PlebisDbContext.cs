@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Plebis.Identity.Areas.Identity.Data
+namespace Plebis.Identity.Data
 {
     public class PlebisDbContext : IdentityDbContext<PlebisUser>
     {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Plebis.Identity.Areas.Identity.Data;
+using Plebis.Identity.Data;
 
 namespace Identity
 {
@@ -150,7 +150,7 @@ namespace Identity
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Plebis.Identity.Areas.Identity.Data.PlebisUser", b =>
+            modelBuilder.Entity("Plebis.Identity.Data.PlebisUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -221,7 +221,7 @@ namespace Identity
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Plebis.Identity.Areas.Identity.PlebisOrganization", b =>
+            modelBuilder.Entity("Plebis.Identity.PlebisOrganization", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -263,7 +263,7 @@ namespace Identity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Plebis.Identity.Areas.Identity.Data.PlebisUser", null)
+                    b.HasOne("Plebis.Identity.Data.PlebisUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -272,7 +272,7 @@ namespace Identity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Plebis.Identity.Areas.Identity.Data.PlebisUser", null)
+                    b.HasOne("Plebis.Identity.Data.PlebisUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -287,7 +287,7 @@ namespace Identity
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Plebis.Identity.Areas.Identity.Data.PlebisUser", null)
+                    b.HasOne("Plebis.Identity.Data.PlebisUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -296,7 +296,7 @@ namespace Identity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Plebis.Identity.Areas.Identity.Data.PlebisUser", null)
+                    b.HasOne("Plebis.Identity.Data.PlebisUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

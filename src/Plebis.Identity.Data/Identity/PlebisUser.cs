@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace Plebis.Identity.Areas.Identity.Data
+namespace Plebis.Identity.Data
 {
     // Add profile data for application users by adding properties to the PlebisUser class
     public class PlebisUser : IdentityUser
