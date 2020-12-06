@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "Plebis.Membership": {
+    "Plebis.Organizations": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "https://localhost:10001"
+      "applicationUrl": "https://localhost:10000"
     },
     "Docker": {
       "commandName": "Docker",

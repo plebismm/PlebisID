@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plebis.Membership
+namespace Plebis.Organizations
 {
     public class GreeterService : Greeter.GreeterBase
     {

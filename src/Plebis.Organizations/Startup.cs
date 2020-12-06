@@ -3,14 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Plebis.Membership.Services;
-using Plebis.Membership.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plebis.Membership
+namespace Plebis.Organizations
 {
     public class Startup
     {
@@ -19,8 +17,6 @@ namespace Plebis.Membership
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
-
-            services.AddSingleton<MembershipStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,7 +31,7 @@ namespace Plebis.Membership
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<MembershipService>();
+                endpoints.MapGrpcService<GreeterService>();
 
                 endpoints.MapGet("/", async context =>
                 {

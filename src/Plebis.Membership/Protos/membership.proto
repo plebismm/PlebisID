@@ -1,13 +1,14 @@
 syntax = "proto3";
 
-option csharp_namespace = "Plebis.Membership";
+option csharp_namespace = "Plebis.Services";
 
-package membership;
+package services;
 
 // The greeting service definition.
 service Membership {
   // Sends a greeting
   rpc AddMember (AddMemberRequest) returns (AddMemberResponse);
+  rpc AllMemberships (GetMembersRequest) returns (GetMembersResponse);
 }
 
 enum MembershipStatus {
@@ -17,13 +18,28 @@ enum MembershipStatus {
   MEMBERSHIP_REJECTED = 100;
 }
 
+message MemberLink {
+	string organization = 1;
+	string member = 2;
+}
+
 // The request message containing the user's name.
 message AddMemberRequest {
   string organization = 1;
   string subject = 2;
+  string type = 3;
 }
 
 // The response message containing the greetings.
 message AddMemberResponse {
-  MembershipStatus status = 1;
+  string membershipId = 1;
+  MembershipStatus status = 2;
+}
+
+message GetMembersRequest {
+	string organization = 1;
+}
+
+message GetMembersResponse {
+	repeated MemberLink members = 1;
 }
