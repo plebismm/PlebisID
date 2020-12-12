@@ -26,6 +26,8 @@
     <PackageReference Include="IdentityServer4" Version="4.1.1" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.1" />
     <PackageReference Include="IdentityServer4.EntityFramework" Version="4.1.1" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0" />
@@ -48,8 +50,13 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\Plebis.Core\Plebis.Core.csproj" />
     <ProjectReference Include="..\Plebis.Identity.Data\Plebis.Identity.Data.csproj" />
     <ProjectReference Include="..\Plebis.Identity.Data.Migrations.Sqlite\Plebis.Identity.Data.Migrations.Sqlite.csproj" />
     <ProjectReference Include="..\Plebis.Identity.Data.Migrations.SqlServer\Plebis.Identity.Data.Migrations.SqlServer.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Pages\Setup\" />
   </ItemGroup>
 </Project>
